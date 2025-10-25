@@ -1,0 +1,31 @@
+:root{
+    --card-width: 250px;
+    --card-height: 350px;
+    --grid-gap: 2rem;
+}
+
+.cocktail-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+    gap: var(--grid-gap);
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .cocktail-list {
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .cocktail-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+}
