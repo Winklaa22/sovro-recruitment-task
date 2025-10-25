@@ -12,16 +12,16 @@ export const getCocktails = async () => {
 };
 
 export const getCocktailById = async (id: number) => {
-  const response = await api.get(`/cocktails/${id}`);
+  const response = await api.get(`/api/v1/cocktails/${id}`);
   return response.data;
 };
 
 export const getCategories = async () => {
-  const response = await api.get("/categories");
+  const response = await api.get("/api/v1/categories");
   return response.data;
 };
 
 export const getIngredients = async () => {
-  const response = await api.get("/ingredients");
+  const response = await api.get("/api/v1/ingredients");
   return response.data;
 };

@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+
 * {
     box-sizing: border-box;
 }
 
 :root {
     --page_margin_right: 0px;
+    --golden-primary: #d4af37;
+    --golden-light: #f7e98e;
+    --golden-dark: #b8860b;
+    --golden-accent: #ffd700;
+    --golden-rich: #cd7f32;
+    --golden-gradient: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%);
 }
 
 body{
@@ -12,7 +21,60 @@ body{
   overflow-x: hidden;
   display: flex;
   justify-content: center;
-  background: #F2EAD3;
+  background: url('/background.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.contails-title{
+  text-align: center;
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 4.5rem;
+  color: var(--golden-primary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: var(--golden-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+@media (max-width: 1920px) {
+  body {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 1200px) {
+  body {
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+}
+
+/* Fallback dla starszych przeglądarek */
+@supports not (background-attachment: fixed) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 .modal-overlay {

@@ -14,7 +14,15 @@
     width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    .cocktail-list {
+        grid-template-columns: repeat(3, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
     .cocktail-list {
         grid-template-columns: repeat(2, minmax(280px, 1fr));
         gap: 1.5rem;
