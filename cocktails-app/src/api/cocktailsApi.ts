@@ -6,8 +6,20 @@ export const api = axios.create({
   baseURL: API_URL,
 });
 
-export const getCocktails = async () => {
-  const response = await api.get("/api/v1/cocktails");
+interface CocktailsParams {
+  page?: number;
+  per_page?: number;
+  glass?: string;
+  name?: string;
+  instructions?: string;
+  category?: string;
+  alcoholic?: boolean;
+}
+
+export const getCocktails = async (params?: CocktailsParams) => {
+  const response = await api.get("/api/v1/cocktails", {
+    params: params
+  });
   return response.data.data;
 };
 

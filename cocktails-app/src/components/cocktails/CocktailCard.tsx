@@ -1,6 +1,7 @@
 import { useModal } from "../../ModalContext";
 import "../../styles/cocktailCard.css";
 import { BiSolidDrink } from "react-icons/bi";
+import { RiDrinks2Fill } from "react-icons/ri";
 import CocktailPopup from "./CocktailPopup";
 
 
@@ -8,9 +9,10 @@ interface CocktailCardProps {
   id: number;
   cocktailName: string;
   imageUrl: string;
+  alcoholic: boolean;
 }
 
-const CocktailCard = ({id, cocktailName, imageUrl} : CocktailCardProps) => {
+const CocktailCard = ({id, cocktailName, imageUrl, alcoholic} : CocktailCardProps) => {
     
     const {openModal} = useModal();
 
@@ -26,8 +28,8 @@ const CocktailCard = ({id, cocktailName, imageUrl} : CocktailCardProps) => {
             <h2>{cocktailName}</h2>
         </div>
 
-        <div className="card_sign" id="top"><BiSolidDrink /></div>
-        <div className="card_sign" id="bottom"><BiSolidDrink /></div>
+        <div className="card_sign" id="top">{alcoholic ? <BiSolidDrink /> : <RiDrinks2Fill />}</div>
+        <div className="card_sign" id="bottom">{alcoholic ? <BiSolidDrink /> : <RiDrinks2Fill />}</div>
 
     </div>
     )

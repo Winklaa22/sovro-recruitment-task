@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+
+
+:root{
+    --filtersBoxBgColor: #bda780;
+    --selectBoxesBgColor: #ceb993;
+    --selectBoxesBorderColor: #8f0404;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--filtersBoxBgColor);
+    border-radius: 8px;
+    align-items: center;
+}
+
+.filters input[type="text"],
+.filters select {
+    font-family: "Gloock", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0.5rem;
+    border: 1px solid var(--selectBoxesBorderColor);
+    color: var(--selectBoxesBorderColor);
+    background: var(--selectBoxesBgColor);
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.filters input[type="text"]:focus,
+.filters select:focus {
+    outline: none;
+    border-color: var(--selectBoxesBorderColor);
+}
+
+.filters select option {
+    background-color: var(--selectBoxesBgColor);
+    color: var(--selectBoxesBorderColor);
+    transition: background-color 0.3s ease;
+}
+
+.filters select option:checked,
+.filters select option:hover {
+    background-color: var(--selectBoxesBorderColor);
+    color: var(--selectBoxesBgColor);
+}
+
+.filters label {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.filters input[type="checkbox"] {
+    margin: 0;
+}
+
+.contails-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filters input[type="text"],
+    .filters select {
+        min-width: unset;
+        width: 100%;
+    }
+}

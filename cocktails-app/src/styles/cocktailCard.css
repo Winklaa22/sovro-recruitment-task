@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+
 :root{
     --cocktailCardBackground: #bda780;
     --cocktailCardBorderSize: 3px;
@@ -11,11 +13,19 @@
     align-items: center;
     justify-content: center;
     height: 450px;
+    width: 300px;
     padding: 20px;
     border-radius: 15px;
     border: var(--cocktailCardBorderSize) solid var(--cocktailCardBorderColor);
     background: var(--cocktailCardBackground);
     transition: .3s ease-in-out;
+}
+
+.cocktail-card h2{
+    color: rgb(90, 0, 0);
+  font-family: "Gloock", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .cocktail-card:hover{
