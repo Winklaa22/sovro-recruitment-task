@@ -3,7 +3,7 @@
 ## 🚀 Quick Start
 
 ### Nestify link
-   https://sovro-coctails-app.netlify.app
+   https://solvro-cocktails-app.netlify.app/
 
 ### Prerequisites
 - **Node.js** (v21 or higher)
