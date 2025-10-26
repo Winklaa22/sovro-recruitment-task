@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import type { ReactNode } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import type { ReactNode, MouseEvent } from 'react';
 
 type ModalContextType = {
   openModal: (content: ReactNode) => void;
@@ -14,11 +15,10 @@ const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [modals, setModals] = useState<ReactNode[]>([]);
+  const [closingIndex, setClosingIndex] = useState<number | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = modals.length > 0 ? 'hidden' : 'auto';
-    document.documentElement.style.setProperty('--page_margin_right', modals.length > 0 ? '15px' : '0px');
-
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -29,23 +29,65 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
   };
 
   const closeModal = () => {
-    setModals(currentModals => currentModals.slice(0, -1));
+    const DELAY_MS = 300;
+    setClosingIndex(modals.length - 1);
+
+    setTimeout(() => {
+      setModals((currentModals) => currentModals.slice(0, -1));
+      setClosingIndex(null);
+    }, DELAY_MS);
   };
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
-      {modals.map((modalContent, index) => (
-        <div
-          className="modal-overlay"
-          key={index}
-          onClick={index === modals.length - 1 ? closeModal : undefined}
-        >
-          <div className="modal-wrapper" onClick={(e) => e.stopPropagation()}>
-            {modalContent}
-          </div>
-        </div>
-      ))}
+
+      <AnimatePresence>
+        {modals.map((modalContent, index) => {
+          const isTop = index === modals.length - 1;
+          const isClosing = closingIndex === index;
+
+          const overlayVariants = {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 },
+            exit: { opacity: 0 },
+          };
+
+          const wrapperVariants = {
+            hidden: { y: -50, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+            exit: { y: -30, opacity: 0 },
+          };
+
+          return (
+            <motion.div
+              // @ts-ignore allow motion props
+              className="modal-overlay"
+              key={index}
+              onClick={isTop ? closeModal : undefined}
+              initial="hidden"
+              animate={isClosing ? 'exit' : 'visible'}
+              exit="exit"
+              variants={overlayVariants}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              style={{ pointerEvents: isTop ? 'auto' : 'none' }}
+            >
+              <motion.div
+                //@ts-ignore allow motion props
+                className="modal-wrapper"
+                onClick={(e: MouseEvent) => e.stopPropagation()}
+                variants={wrapperVariants}
+                initial="hidden"
+                animate={isClosing ? 'exit' : 'visible'}
+                exit="exit"
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+              >
+                {modalContent}
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
     </ModalContext.Provider>
   );
 };

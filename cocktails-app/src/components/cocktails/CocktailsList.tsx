@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { getCocktails } from "../../api/cocktailsApi";
 import "../../styles/cocktailsList.css";
 import { useFavorites } from "../../hooks/useFavorites";
 import CocktailCard from "./CocktailCard";
