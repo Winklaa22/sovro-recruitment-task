@@ -24,3 +24,20 @@
 
 4. **Open your browser**
    - The app will be available at `http://localhost:5173`
+
+## 🐛 Troubleshooting
+
+### Windows PowerShell Execution Policy Error
+If you encounter this error on Windows:
+```
+File C:\Program Files\nodejs\npm.ps1 cannot be loaded. The file C:\Program Files\nodejs\npm.ps1 is not digitally signed. You cannot run this script on the current system.
+```
+
+**Solution:**
+1. Open PowerShell as Administrator
+2. Run the following command:
+   ```powershell
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+3. Confirm with `Y` when prompted
+4. Try running `npm run dev` again
