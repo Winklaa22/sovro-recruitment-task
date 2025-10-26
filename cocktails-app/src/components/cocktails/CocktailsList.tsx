@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCocktails } from "../../api/cocktailsApi";
 import "../../styles/cocktailsList.css";
+import { useFavorites } from "../../hooks/useFavorites";
 import CocktailCard from "./CocktailCard";
 
 type Cocktail = {
@@ -10,34 +11,8 @@ type Cocktail = {
   alcoholic: boolean
 };
 
-type Filter = {
-    search?: string;
-    category?: string;
-    alcoholic?: boolean;
-    glass?: string;
-}
-
-const CocktailsList = ({ filter = {} }: { filter?: Filter }) => {
-    const [cocktails, setCocktails] = useState<Cocktail[]>([]);
-
-    useEffect(() => {
-        getCocktails({
-                alcoholic: filter.alcoholic,
-                name: `%${filter.search}%`,
-                category: filter.category,
-                glass: filter.glass
-            })
-            .then(data => {
-                if (Array.isArray(data)) {
-                    setCocktails(data);
-                } else {
-                    console.error('Expected array but got:', data);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching cocktails:', error);
-            });
-    }, [filter]);
+const CocktailsList = ({ cocktails = [] }: { cocktails?: Cocktail[] }) => {
+    const {favorites} = useFavorites();
 
     return (
         <div className="cocktail-list">
@@ -48,6 +23,7 @@ const CocktailsList = ({ filter = {} }: { filter?: Filter }) => {
                     imageUrl={c.imageUrl}
                     alcoholic={c.alcoholic}
                     id={c.id}
+                    isFavoriteCard={favorites.includes(c.id)}
                 />
             ))}
         </div>

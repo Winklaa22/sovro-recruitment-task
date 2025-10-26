@@ -45,6 +45,48 @@
     height: 95%;
 }
 
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #8f0404;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.favorite-btn:hover {
+    background: #8f0404;
+    color: white;
+    transform: scale(1.1);
+}
+
+.favorite-btn svg {
+    width: 16px;
+    height: 16px;
+    color: #8f0404;
+}
+
+.favorite-btn:hover svg {
+    color: white;
+}
+
+.favorite-card {
+    border-color: #8f0404;
+    box-shadow: 0 0 15px rgba(143, 4, 4, 0.3);
+}
+
+.favorite-card .card-content {
+    border-color: #8f0404;
+}
+
 .cocktail-card .card_sign{
     position: absolute;
     color: rgb(180, 9, 9);

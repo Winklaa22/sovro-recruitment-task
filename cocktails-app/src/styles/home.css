@@ -5,6 +5,7 @@
     --filtersBoxBgColor: #bda780;
     --selectBoxesBgColor: #ceb993;
     --selectBoxesBorderColor: #8f0404;
+    --golden: #d4af37;
 }
 
 .filters {
@@ -67,6 +68,44 @@
     text-align: center;
     margin-bottom: 2rem;
     color: #333;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.pagination button {
+    font-family: "Gloock", serif;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    width: 6rem;
+    border: 1px solid var(--selectBoxesBorderColor);
+    background: var(--selectBoxesBgColor);
+    color: var(--selectBoxesBorderColor);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--selectBoxesBorderColor);
+    color: var(--selectBoxesBgColor);
+}
+
+.pagination button:disabled {
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-family: "Gloock", serif;
+    font-weight: 400;
+    color: var(--golden);
+    font-size: 16px;
 }
 
 @media (max-width: 768px) {
