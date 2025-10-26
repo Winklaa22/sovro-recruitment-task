@@ -49,7 +49,7 @@
 }
 
 .filters select::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
 }
 
 .filters select::-webkit-scrollbar-track {
