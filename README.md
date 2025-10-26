@@ -2,6 +2,9 @@
 
 ## 🚀 Quick Start
 
+### Nestify link
+   https://sovro-coctails-app.netlify.app
+
 ### Prerequisites
 - **Node.js** (v21 or higher)
 - **npm** package manager
