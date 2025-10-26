@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import CocktailsList from "./cocktails/CocktailsList";
 import "../styles/home.css";
-import { getCategories, getCocktails } from "../api/cocktailsApi";
+import { getCocktails } from "../api/cocktailsApi";
 import { useFavorites } from "../hooks/useFavorites";
-import { data } from "react-router-dom";
-
 
 type Cocktail = {
   id: number;
@@ -66,7 +64,7 @@ const Home = () => {
             });
     }, [filter]);
 
-    const [categories, setCategories] = useState([
+    const categories = [
         "Cocktail",
         "Ordinary Drink",
         "Punch / Party Drink",
@@ -77,9 +75,9 @@ const Home = () => {
         "Coffee / Tea",
         "Homemade Liqueur",
         "Soft Drink"
-    ])
+    ]
 
-        const [glassesList, setGlassesList] = useState([
+        const glassesList = [
         "Highball glass",
         "Old-fashioned glass",
         "Cocktail glass",
@@ -112,17 +110,7 @@ const Home = () => {
         "Martini Glass",
         "Balloon Glass",
         "Coupe Glass"
-    ])
-
-
-    // Nie działa mi to :(
-    // useEffect(()=>{
-    //     try{
-    //         getCategories().then(data => setCategories(data))
-    //     } catch(e){
-
-    //     }
-    // }, [])
+    ]
 
     const changeFilter = (search?: string, category?: string, alcoholic?: boolean, glass?: string, page?: number) => {
         setFilter(prev => ({

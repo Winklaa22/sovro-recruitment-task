@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { ReactNode, MouseEvent } from 'react';
 
